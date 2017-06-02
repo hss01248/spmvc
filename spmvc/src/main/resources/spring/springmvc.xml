@@ -13,7 +13,10 @@
 		http://www.springframework.org/schema/tx  ">
 
 	<!-- 使用spring组件扫描 -->
-	<context:component-scan base-package="com.hss01248.springdemo.controller" />
+	<context:component-scan base-package="com.hss01248.spmvc.controller" />
+	
+	<!--配置静态资源路径-->
+	<mvc:resources mapping="/WEB-INF/imgs/" location="/imgs/**"/>
 
 
 	<!--&lt;!&ndash; 全部使用默认的处理器 &ndash;&gt;
@@ -23,8 +26,7 @@
 
 
 	<!-- 注解处理器映射器 -->
-	<bean
-			class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
 
 
 	<!--&lt;!&ndash; 配置处理器适配器 springmvc框架根据HandlerAdapter接口判断是否是处理器适配器 &ndash;&gt;
@@ -64,27 +66,27 @@
 	</bean>
 
 	<!--全局的异常处理-->
-	<bean class="com.hss01248.springdemo.exception.CustomExceptionHandler"/>
+	<bean class="com.hss01248.spmvc.exception.CustomExceptionHandler"/>
 	
 	<!--拦截器-->
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**"/>
-			<bean class="com.hss01248.springdemo.intercetor.LogInterceptor"/>
+			<bean class="com.hss01248.spmvc.intercetor.LogInterceptor"/>
 		</mvc:interceptor>
-		<!--<mvc:interceptor>
-			<mvc:mapping path="/**"/>
-			<bean class="com.hss01248.springdemo.intercetor.AuthInterceptor"/>
-		</mvc:interceptor>-->
 		<mvc:interceptor>
 			<mvc:mapping path="/**"/>
-			<bean class="com.hss01248.springdemo.intercetor.HttpHeaderInterceptor"/>
+			<bean class="com.hss01248.spmvc.intercetor.AuthInterceptor"/>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<bean class="com.hss01248.spmvc.intercetor.HttpHeaderInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>
 
 
 	<!-- date数据转换器:注册属性编辑器 -->
-	<!--<bean id="dateConverter" class="com.hss01248.springdemo.converter.DateConverter"></bean>-->
+	<!--<bean id="dateConverter" class="com.hss01248.spmvcerter.DateConverter"></bean>-->
 	<!-- 自定义webBinder -->
 	<bean id="customBinder" class="org.springframework.web.bind.support.ConfigurableWebBindingInitializer">
 		<property name="conversionService" ref="conversionService" />
@@ -98,8 +100,8 @@
 	<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
 		<property name="converters">
 			<set>
-				<bean class="com.hss01248.springdemo.converter.CustomDateConverter"/>
-				<bean class="com.hss01248.springdemo.converter.StringTrimConverter"/>
+				<bean class="com.hss01248.spmvc.converter.CustomDateConverter"/>
+				<bean class="com.hss01248.spmvc.converter.StringTrimConverter"/>
 			</set>
 		</property>
 	</bean>

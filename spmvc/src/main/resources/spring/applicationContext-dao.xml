@@ -22,6 +22,7 @@
 		<property name="url" value="${jdbc.url}" />
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
+		<property name="maxTotal" value="10"/>
 		<!--<property name="maxActive" value="10" />-->
 		<property name="maxIdle" value="5" />
 	</bean>
@@ -45,7 +46,7 @@
 		如果要扫描多个包，中间使用半角逗号分隔
 		要求mapper.xml和mapper.java同名且在同一个目录 
 		 -->
-		<property name="basePackage" value="cn.itcast.ssm.mapper"/>
+		<property name="basePackage" value="com.hss01248.spmvc.mapper"/>
 		<!-- 使用sqlSessionFactoryBeanName -->
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
 		
