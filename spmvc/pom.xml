@@ -5,7 +5,7 @@
   <artifactId>spmvc</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>spmvc Maven Webapp</name>
+  <username>spmvc Maven Webapp</username>
   <url>http://maven.apache.org</url>
   <dependencies>
     <dependency>

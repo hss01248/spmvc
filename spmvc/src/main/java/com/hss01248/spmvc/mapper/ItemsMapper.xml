@@ -3,7 +3,7 @@
 <mapper namespace="cn.itcast.ssm.mapper.ItemsMapper" >
   <resultMap id="BaseResultMap" type="cn.itcast.ssm.po.Items" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
     <result column="price" property="price" jdbcType="REAL" />
     <result column="pic" property="pic" jdbcType="VARCHAR" />
     <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
@@ -70,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, name, price, pic, createtime
+    id, username, price, pic, createtime
   </sql>
   <sql id="Blob_Column_List" >
     detail
@@ -124,10 +124,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="cn.itcast.ssm.po.Items" >
-    insert into items (id, name, price, 
+    insert into items (id, username, price,
       pic, createtime, detail
       )
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{price,jdbcType=REAL}, 
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{price,jdbcType=REAL},
       #{pic,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{detail,jdbcType=LONGVARCHAR}
       )
   </insert>
@@ -137,8 +137,8 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="name != null" >
-        name,
+      <if test="username != null" >
+        username,
       </if>
       <if test="price != null" >
         price,
@@ -157,8 +157,8 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
       </if>
       <if test="price != null" >
         #{price,jdbcType=REAL},
@@ -186,8 +186,8 @@
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.name != null" >
-        name = #{record.name,jdbcType=VARCHAR},
+      <if test="record.username != null" >
+        username = #{record.username,jdbcType=VARCHAR},
       </if>
       <if test="record.price != null" >
         price = #{record.price,jdbcType=REAL},
@@ -209,7 +209,7 @@
   <update id="updateByExampleWithBLOBs" parameterType="map" >
     update items
     set id = #{record.id,jdbcType=INTEGER},
-      name = #{record.name,jdbcType=VARCHAR},
+      username = #{record.username,jdbcType=VARCHAR},
       price = #{record.price,jdbcType=REAL},
       pic = #{record.pic,jdbcType=VARCHAR},
       createtime = #{record.createtime,jdbcType=TIMESTAMP},
@@ -221,7 +221,7 @@
   <update id="updateByExample" parameterType="map" >
     update items
     set id = #{record.id,jdbcType=INTEGER},
-      name = #{record.name,jdbcType=VARCHAR},
+      username = #{record.username,jdbcType=VARCHAR},
       price = #{record.price,jdbcType=REAL},
       pic = #{record.pic,jdbcType=VARCHAR},
       createtime = #{record.createtime,jdbcType=TIMESTAMP}
@@ -232,8 +232,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="cn.itcast.ssm.po.Items" >
     update items
     <set >
-      <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
       </if>
       <if test="price != null" >
         price = #{price,jdbcType=REAL},
@@ -252,7 +252,7 @@
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.itcast.ssm.po.Items" >
     update items
-    set name = #{name,jdbcType=VARCHAR},
+    set username = #{username,jdbcType=VARCHAR},
       price = #{price,jdbcType=REAL},
       pic = #{pic,jdbcType=VARCHAR},
       createtime = #{createtime,jdbcType=TIMESTAMP},
@@ -261,7 +261,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.itcast.ssm.po.Items" >
     update items
-    set name = #{name,jdbcType=VARCHAR},
+    set username = #{username,jdbcType=VARCHAR},
       price = #{price,jdbcType=REAL},
       pic = #{pic,jdbcType=VARCHAR},
       createtime = #{createtime,jdbcType=TIMESTAMP}

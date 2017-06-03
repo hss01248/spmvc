@@ -11,7 +11,7 @@ GET
 int id
 
 response:
-{"id":null,"name":"英吉利海峡","price":6897.0,"pic":null,"createtime":null,"detail":null}
+{"id":null,"username":"英吉利海峡","price":6897.0,"pic":null,"createtime":null,"detail":null}
 ```
 
 
@@ -23,7 +23,7 @@ GET
 int id
 
 response:
-{"code":0,"msg":"请求成功","data":{"id":null,"name":"英吉利海峡","price":6897.0,"pic":null,"createtime":null,"detail":null}}
+{"code":0,"msg":"请求成功","data":{"id":null,"username":"英吉利海峡","price":6897.0,"pic":null,"createtime":null,"detail":null}}
 ```
 
 
@@ -51,7 +51,7 @@ POST
 int id,MultipartFile picFile,MultipartFile picFile2
 
 response:
-{"code":0,"msg":"请求成功","data":{"id":null,"name":"英吉利海峡","price":6897.0,"pic":null,"createtime":null,"detail":null}}
+{"code":0,"msg":"请求成功","data":{"id":null,"username":"英吉利海峡","price":6897.0,"pic":null,"createtime":null,"detail":null}}
 ```
 
 

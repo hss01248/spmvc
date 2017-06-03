@@ -100,9 +100,9 @@
     </if>
   </delete>
   <insert id="insert" parameterType="cn.itcast.ssm.po.User" >
-    insert into user (id, username, birthday, 
+    insert into user (id, username, birthday,
       sex, address)
-    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, 
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE},
       #{sex,jdbcType=CHAR}, #{address,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.itcast.ssm.po.User" >

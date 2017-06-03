@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <properties resource="db.properties"/>
+
+    <typeAliases>
+       <!-- <typeAlias type="com.hss01248.batis.po.User">User</typeAlias>-->
+        <package name="com.hss01248.batis.po"/><!--批量别名,该路径下的bean可以类名作为别名,首字母大小写均可-->
+    </typeAliases>
+    <!--<typeHandlers></typeHandlers>   java类型和sql类型映射,默认提供的类型基本够用了-->
+
+
+    <!--和spring整合后将废除-->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--加载mappers  和spring整合后,采用mapperscanper,此处mappers不用再配置-->
+    <mappers>
+        <mapper resource="mapper/UserMapper.xml"/>
+        <!--<mapper class="com.hss01248.batis.mapper.UserMapper"/> 此时需要xml和java文件同名,且在同一个目录下-->
+        <!--批量mapper配置,  也需要xml和java文件同名,且在同一个目录下-->
+       <!-- <package name="com.hss01248.batis.mapper"/>-->
+    </mappers>
+</configuration>

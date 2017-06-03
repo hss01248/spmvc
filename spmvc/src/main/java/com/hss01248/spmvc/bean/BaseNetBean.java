@@ -3,19 +3,30 @@ package com.hss01248.spmvc.bean;
 /**
  * Created by Administrator on 2017/1/7 0007.
  */
-public class BaseNetBean {
+public class BaseNetBean<T> {
 
-    private int code = 0;
-    private String msg = "请求成功";
-    private Object data;
+    public void setCode(int code) {
+        this.code = code;
+    }
 
-    public BaseNetBean(int code,String msg,Object data){
+    private int code = ErrorCode.OK;
+    private String msg = ErrorMsg.getMsg(ErrorCode.OK);
+    private T data;
+
+    public BaseNetBean(){
+
+    }
+
+
+
+
+    public BaseNetBean(int code,String msg,T data){
         this.code = code;
         this.msg = msg;
         this.data = data;
     }
 
-    public BaseNetBean(Object data){
+    public BaseNetBean(T data){
         this.data = data;
     }
 
@@ -23,8 +34,10 @@ public class BaseNetBean {
         return code;
     }
 
-    public void setCode(int code) {
+    public BaseNetBean setCode(int code,String msg) {
         this.code = code;
+        this.msg = msg;
+        return this;
     }
 
     public String getMsg() {
@@ -35,11 +48,11 @@ public class BaseNetBean {
         this.msg = msg;
     }
 
-    public Object getData() {
+    public T getData() {
         return data;
     }
 
-    public void setData(Object data) {
+    public void setData(T data) {
         this.data = data;
     }
 }

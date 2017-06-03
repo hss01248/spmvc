@@ -8,9 +8,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<!-- 批量别名定义 指定包路径，自动扫描包下边的pojo，定义别名，别名默认为类名（首字母小写或大写） -->
 		<package name="com.hss01248.spmvc.po" />
 	</typeAliases>
-	<!-- 
-	由于使用spring和mybatis整合的mapper扫描器，这里可以不用配置了
-	<mappers>
-		<package name="cn.itcast.ssm.mapper" />
+	<!--由于使用spring和mybatis整合的mapper扫描器，这里可以不用配置了-->
+	<!--<mappers>
+		<package username="com.hss01248.spmvc.mapper.UserMapper2" />
 	</mappers> -->
 </configuration>

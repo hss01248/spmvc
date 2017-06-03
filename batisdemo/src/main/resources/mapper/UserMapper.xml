@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hss01248.batis.mapper.UserMapper">
+
+
+
+    <select id="findById" resultType="com.hss01248.batis.po.User" parameterType="int" >SELECT * FROM user WHERE id = #{id}</select>
+
+    <select id="findByName" parameterType="java.lang.String" resultType="User">
+        SELECT * FROM user WHERE username LIKE '%${username}%'
+    </select>
+
+
+    <insert id="add" parameterType="User" >
+        <selectKey order="AFTER" keyProperty="id" resultType="int">
+            SELECT last_insert_id()
+        </selectKey>
+        INSERT INTO user(username,birthday,sex,address) VALUES (#{username},#{birthday},#{sex},#{address})
+    </insert>
+
+    <!-- mysql的uuid生成主键 -->
+    <!-- <insert id="insertUser" parameterType="cn.itcast.mybatis.po.User">
+        <selectKey keyProperty="id" order="BEFORE" resultType="string">
+            select uuid()
+        </selectKey>
+
+        INSERT INTO USER(id,username,birthday,sex,address) VALUES(#{id},#{username},#{birthday},#{sex},#{address})
+    </insert> -->
+
+    <!-- oracle
+    在执行insert之前执行select 序列.nextval() from dual取出序列最大值，将值设置到user对象 的id属性
+     -->
+    <!-- <insert id="insertUser" parameterType="cn.itcast.mybatis.po.User">
+        <selectKey keyProperty="id" order="BEFORE" resultType="int">
+            select 序列.nextval() from dual
+        </selectKey>
+
+        INSERT INTO USER(id,username,birthday,sex,address) VALUES(#{id},#{username},#{birthday},#{sex},#{address})
+    </insert> -->
+
+    <delete id="del" parameterType="int">
+        DELETE FROM user WHERE id = #{id}
+    </delete>
+
+    <update id="update" parameterType="User">
+        UPDATE user SET username=#{username},birthday=#{birthday},sex=#{sex},address=#{address} WHERE id=#{id}
+    </update>
+
+
+
+    <!--定义一个resultmap-->
+    <resultMap id="userlistResultMap" type="User">
+        <id column="id_" property="id"/>
+        <result column="username_" property="username"/>
+        <result column="sex_" property="sex"/>
+    </resultMap>
+    <!--使用resultmap-->
+    <select id="getListByResultMap"  parameterType="UserQueryVo" resultMap="userlistResultMap">/*引用规则为命名空间.id,同一个xml中命令空间可省略*/
+        SELECT id id_,username username_,sex sex_ FROM user WHERE username LIKE '%${userCustom.username}%'
+    </select>
+
+
+
+
+
+    <!--包装类型参数-->
+    <select id="findBy" parameterType="UserQueryVo" resultType="User">
+        SELECT * FROM user WHERE username LIKE '%${userCustom.username}%'
+    </select>
+
+    <!--返回简单类型-->
+    <select id="getCount" resultType="int">
+        SELECT count(1) FROM user
+    </select>
+
+
+    <!--动态sql-->
+    <select id="findBy" parameterType="UserQueryVo" resultType="User">
+        SELECT * FROM user /*WHERE 1=1*/
+        <where>/*where标签可以自动去除第一个多余的and*/
+            <include refid="query_user_where"/>
+        </where>
+
+    </select>
+
+    <!--sql片段  引用时:空间.id-->
+    <sql id="query_user_where">
+        <if test="userCustom!=null">
+            <if test="userCustom.username != null and userCustom.username != '' ">
+                AND username  LIKE '%${userCustom.username}%'
+            </if>
+            <if test="userCustom.sex != null and userCustom.sex != '' ">
+                AND sex  LIKE '%${userCustom.sex}%'
+            </if>
+        </if>
+        <if test="ids !=null">
+            <foreach collection="ids" open="and id = (" close=")" item="id" separator="OR">
+              #{id}
+            </foreach>
+
+        </if>
+    </sql>
+
+
+
+
+</mapper>

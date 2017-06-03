@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Created by Administrator on 2017/1/7 0007.
@@ -37,6 +38,11 @@ public class AuthInterceptor implements HandlerInterceptor {
         if(letGo){
             return true;
         }
+        HttpSession session = httpServletRequest.getSession(false);
+
+        if(session ==null){
+            return false;
+        }
 
         String sessionId = httpServletRequest.getParameter("sessionId");
         if(StringUtils.isEmpty(sessionId)){
@@ -47,7 +53,7 @@ public class AuthInterceptor implements HandlerInterceptor {
             return false;
         }
 
-        if(!sessionId.equalsIgnoreCase(httpServletRequest.getRequestedSessionId())){
+        if(!sessionId.equalsIgnoreCase(session.getId())){
             httpServletResponse.setCharacterEncoding("utf-8");
             httpServletResponse.getWriter().write(MyJson.toJsonStr(new BaseNetBean(6,"login timeout",null)));
             return false;
