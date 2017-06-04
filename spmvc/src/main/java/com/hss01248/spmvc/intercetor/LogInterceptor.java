@@ -1,6 +1,6 @@
 package com.hss01248.spmvc.intercetor;
 
-import com.hss01248.spmvc.util.MyLog;
+import com.hss01248.utils.MyLog;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 

@@ -3,11 +3,22 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.hss01248</groupId>
   <artifactId>spmvc</artifactId>
-  <packaging>war</packaging>
+  <packaging>pom</packaging>
   <version>1.0-SNAPSHOT</version>
-  <username>spmvc Maven Webapp</username>
+
+    <name>spmvc Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
+
+    <!---->
+    <dependency>
+      <groupId>com.hss01248</groupId>
+      <artifactId>jtuils</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+
+
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>

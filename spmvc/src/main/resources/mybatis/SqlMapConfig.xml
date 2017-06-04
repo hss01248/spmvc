@@ -1,15 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration
-PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-config.dtd">
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
-	<!-- 定义 别名 -->
-	<typeAliases>
-		<!-- 批量别名定义 指定包路径，自动扫描包下边的pojo，定义别名，别名默认为类名（首字母小写或大写） -->
-		<package name="com.hss01248.spmvc.po" />
-	</typeAliases>
-	<!--由于使用spring和mybatis整合的mapper扫描器，这里可以不用配置了-->
-	<!--<mappers>
-		<package username="com.hss01248.spmvc.mapper.UserMapper2" />
-	</mappers> -->
+    <properties resource="db.properties"/>
+
+    <!-- 全局配置参数 -->
+    <settings>
+        <!-- 延迟加载总开关 -->
+        <setting name="lazyLoadingEnabled" value="true" />
+        <!-- 设置按需加载 -->
+        <setting name="aggressiveLazyLoading" value="false" />
+        <!--打开二级缓存-->
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
+
+    <typeAliases>
+       <!-- <typeAlias type="com.hss01248.batis.po.User">User</typeAlias>-->
+        <package name="com.hss01248.spmvc.po"/><!--批量别名,该路径下的bean可以类名作为别名,首字母大小写均可-->
+    </typeAliases>
+    <!--<typeHandlers></typeHandlers>   java类型和sql类型映射,默认提供的类型基本够用了-->
+
+
+
 </configuration>

@@ -5,9 +5,49 @@
     <artifactId>batisdemo</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
-    <username>batisdemo Maven Webapp</username>
+    <name>batisdemo Maven Webapp</name>
     <url>http://maven.apache.org</url>
+
+    <!--<plugins>
+        <plugin>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-maven-plugin</artifactId>
+            <version>1.3.2</version>
+            <configuration>
+                &lt;!&ndash;配置文件的位置&ndash;&gt;
+                <configurationFile>src/main/resources/generatorConfig.xml</configurationFile>
+                <verbose>true</verbose>
+                <overwrite>true</overwrite>
+            </configuration>
+            <executions>
+                <execution>
+                    <id>Generate MyBatis Artifacts</id>
+                    <goals>
+                        <goal>generate</goal>
+                    </goals>
+                </execution>
+            </executions>
+            <dependencies>
+                <dependency>
+                    <groupId>org.mybatis.generator</groupId>
+                    <artifactId>mybatis-generator-core</artifactId>
+                    <version>1.3.2</version>
+                </dependency>
+            </dependencies>
+        </plugin>
+    </plugins>-->
+
+
+
     <dependencies>
+
+        <dependency>
+            <groupId>com.hss01248</groupId>
+            <artifactId>jtuils</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -44,6 +84,22 @@
             <artifactId>commons-dbcp2</artifactId>
             <version>2.1.1</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.mybatis.caches/mybatis-ehcache -->
+        <dependency>
+            <groupId>org.mybatis.caches</groupId>
+            <artifactId>mybatis-ehcache</artifactId>
+            <version>1.1.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.mybatis.generator/mybatis-generator-core -->
+        <dependency>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-core</artifactId>
+            <version>1.3.5</version>
+        </dependency>
+
+
     </dependencies>
     <build>
         <finalName>batisdemo</finalName>

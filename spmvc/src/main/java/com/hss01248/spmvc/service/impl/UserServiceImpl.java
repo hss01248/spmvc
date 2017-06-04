@@ -4,7 +4,7 @@ import com.hss01248.spmvc.bean.BaseNetBean;
 import com.hss01248.spmvc.mapper.UserMapper2;
 import com.hss01248.spmvc.po.User;
 import com.hss01248.spmvc.service.UserService;
-import com.hss01248.spmvc.util.MyLog;
+import com.hss01248.utils.MyLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

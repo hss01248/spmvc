@@ -1,9 +1,9 @@
 package com.hss01248.test;
 
+import com.hss01248.batis.mapper.OrdersMapperCustom;
 import com.hss01248.batis.mapper.UserMapper;
-import com.hss01248.batis.po.User;
-import com.hss01248.batis.po.UserCustom;
-import com.hss01248.batis.po.UserQueryVo;
+import com.hss01248.batis.po.*;
+import com.hss01248.utils.MyLog;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -91,6 +91,47 @@ public class FirstBatis {
             //user.setId(id);
             //session.commit();
             System.out.print(Arrays.toString(users.toArray()));
+            //System.out.print(count);
+        }catch (Exception e){
+            e.printStackTrace();
+
+        }finally {
+            session.close();
+        }
+
+    }
+
+
+    @Test
+    public void testOne2One(){
+        SqlSession session =  factory.openSession();
+        try {
+
+            User user = new User();
+
+            user.setUsername("王五");
+            user.setAddress("北京");
+            user.setSex("y");
+            user.setBirthday(new Date(2011,5,25));
+
+            UserQueryVo vo = new UserQueryVo();
+            UserCustom custom = new UserCustom();
+            custom.setUsername("张");
+            vo.setUserCustom(custom);
+
+
+            OrdersMapperCustom mapper =  session.getMapper(OrdersMapperCustom.class);
+            List<User> customs =  mapper.findUsersAndOrders();
+            //int count = mapper.getCount();
+            //mapper.del(70);
+
+            //mapper.add(user);
+
+
+            //user.setId(id);
+            //session.commit();
+            //System.out.print(Arrays.toString(customs.toArray()));
+            MyLog.d(customs);
             //System.out.print(count);
         }catch (Exception e){
             e.printStackTrace();

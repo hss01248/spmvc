@@ -66,9 +66,9 @@
 
 
     <!--包装类型参数-->
-    <select id="findBy" parameterType="UserQueryVo" resultType="User">
+    <!--<select id="findBy" parameterType="UserQueryVo" resultType="User">
         SELECT * FROM user WHERE username LIKE '%${userCustom.username}%'
-    </select>
+    </select>-->
 
     <!--返回简单类型-->
     <select id="getCount" resultType="int">

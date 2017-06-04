@@ -12,6 +12,8 @@
 		http://www.springframework.org/schema/aop/spring-aop-3.2.xsd 
 		http://www.springframework.org/schema/tx  ">
 
+
+
 	<!-- 使用spring组件扫描 -->
 	<context:component-scan base-package="com.hss01248.spmvc.controller" />
 	<context:component-scan base-package="com.hss01248.spmvc.service.impl"/>
@@ -40,28 +42,28 @@
 	<!-- 注解适配器 -->
 	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter" >
 		<!--json转换器-->
-		<property username="messageConverters">
+		<property name="messageConverters">
 			<list>
 				<!--<bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"/>-->
 				<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
 			</list>
 		</property>
 		<!--Date数据转换器-->
-		<property username="webBindingInitializer" ref="customBinder"/>
+		<property name="webBindingInitializer" ref="customBinder"/>
 
 	</bean>
 
 	<!--ViewResolver 视图解析器-->
 	<!--用于支持Servlet、JSP视图解析-->
 	<bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property username="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
-		<property username="prefix" value="/WEB-INF/pages/"/>
-		<property username="suffix" value=".jsp"/>
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+		<property name="prefix" value="/WEB-INF/pages/"/>
+		<property name="suffix" value=".jsp"/>
 	</bean>
 
 	<!--文件上传-->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<property username="maxUploadSize">
+		<property name="maxUploadSize">
 			<value>52428800</value>
 		</property>
 	</bean>
@@ -90,8 +92,8 @@
 	<!--<bean id="dateConverter" class="com.hss01248.spmvcerter.DateConverter"></bean>-->
 	<!-- 自定义webBinder -->
 	<bean id="customBinder" class="org.springframework.web.bind.support.ConfigurableWebBindingInitializer">
-		<property username="conversionService" ref="conversionService" />
-		<!--<property username="propertyEditorRegistrars">
+		<property name="conversionService" ref="conversionService" />
+		<!--<property name="propertyEditorRegistrars">
 			<list>
 				<ref bean="dateConverter"/>
 			</list>
@@ -99,7 +101,7 @@
 	</bean>
 	<!-- 转换器 -->
 	<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
-		<property username="converters">
+		<property name="converters">
 			<set>
 				<bean class="com.hss01248.spmvc.converter.CustomDateConverter"/>
 				<bean class="com.hss01248.spmvc.converter.StringTrimConverter"/>

@@ -6,6 +6,16 @@
 
     <properties resource="db.properties"/>
 
+    <!-- 全局配置参数 -->
+    <settings>
+        <!-- 延迟加载总开关 -->
+        <setting name="lazyLoadingEnabled" value="true" />
+        <!-- 设置按需加载 -->
+        <setting name="aggressiveLazyLoading" value="false" />
+        <!--打开二级缓存-->
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
+
     <typeAliases>
        <!-- <typeAlias type="com.hss01248.batis.po.User">User</typeAlias>-->
         <package name="com.hss01248.batis.po"/><!--批量别名,该路径下的bean可以类名作为别名,首字母大小写均可-->
@@ -28,6 +38,8 @@
     <!--加载mappers  和spring整合后,采用mapperscanper,此处mappers不用再配置-->
     <mappers>
         <mapper resource="mapper/UserMapper.xml"/>
+        <mapper resource="mapper/OrdersMapperCustom.xml"/>
+
         <!--<mapper class="com.hss01248.batis.mapper.UserMapper"/> 此时需要xml和java文件同名,且在同一个目录下-->
         <!--批量mapper配置,  也需要xml和java文件同名,且在同一个目录下-->
        <!-- <package name="com.hss01248.batis.mapper"/>-->
