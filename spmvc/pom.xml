@@ -158,6 +158,14 @@
       <version>2.1.1</version>
     </dependency>
 
+    <!--radis-->
+    <!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-redis -->
+    <dependency>
+      <groupId>org.springframework.data</groupId>
+      <artifactId>spring-data-redis</artifactId>
+      <version>1.8.3.RELEASE</version>
+    </dependency>
+
 
 
 
