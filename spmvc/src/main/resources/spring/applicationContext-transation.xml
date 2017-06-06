@@ -23,7 +23,7 @@
 	 </bean>
 	 
 	 <!-- 通知 -->
-	 <tx:advice id="txAdvice" transaction-manager="transactionManager">
+	<!-- <tx:advice id="txAdvice" transaction-manager="transactionManager">
 	 	<tx:attributes>
 	 		<tx:method name="save*" propagation="REQUIRED"/>
 	 		<tx:method name="insert*" propagation="REQUIRED"/>
@@ -35,10 +35,10 @@
 	 	</tx:attributes>
 	 </tx:advice>
 	 
-	 <!-- aop -->
+	 &lt;!&ndash; aop &ndash;&gt;
 	 <aop:config>
 	 	<aop:advisor advice-ref="txAdvice"
 	 				 pointcut="execution(* com.hss01248.spmvc.service.impl.*.*(..))"/>
-	 </aop:config>
+	 </aop:config>-->
 	
 </beans>
