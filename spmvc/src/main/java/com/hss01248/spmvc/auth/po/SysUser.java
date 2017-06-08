@@ -1,6 +1,8 @@
 package com.hss01248.spmvc.auth.po;
 
-public class SysUser {
+import java.io.Serializable;
+
+public class SysUser implements Serializable{
     private String id;
 
     private String usercode;

@@ -3,6 +3,7 @@ package com.hss01248.spmvc.auth;
 import com.hss01248.spmvc.auth.mapper.SysUserMapper;
 import com.hss01248.spmvc.auth.po.SysUser;
 import com.hss01248.spmvc.auth.po.SysUserExample;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -72,5 +73,11 @@ public class CustomRealm extends AuthorizingRealm {
     @Override
     public String getName() {
         return "customRealm";
+    }
+
+    //清除缓存
+    public void clearCached() {
+        PrincipalCollection principals = SecurityUtils.getSubject().getPrincipals();
+        super.clearCache(principals);
     }
 }
