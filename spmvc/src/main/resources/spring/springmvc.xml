@@ -19,7 +19,7 @@
 	<context:component-scan base-package="com.hss01248.spmvc.service.impl"/>
 	
 	<!--配置静态资源路径-->
-	<mvc:resources mapping="/WEB-INF/imgs/" location="/imgs/**"/>
+	<mvc:resources mapping="/imgs/" location="/imgs/**"/>
 
 	<!-- 开启aop，对类代理 -->
 	<aop:config proxy-target-class="true"></aop:config>
@@ -82,7 +82,11 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**"/>
-			<bean class="com.hss01248.spmvc.intercetor.LogInterceptor"/>
+			<bean class="com.hss01248.spmvc.intercetor.FormDataRepeatInterceptor"/>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<bean class="com.hss01248.spmvc.intercetor.LogPrintInterceptor"/><!--基于url的权限控制,后续会被shiro控制-->
 		</mvc:interceptor>
 		<mvc:interceptor>
 			<mvc:mapping path="/**"/>
@@ -92,6 +96,7 @@
 			<mvc:mapping path="/**"/>
 			<bean class="com.hss01248.spmvc.intercetor.HttpHeaderInterceptor"/>
 		</mvc:interceptor>
+
 	</mvc:interceptors>
 
 

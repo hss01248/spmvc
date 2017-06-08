@@ -6,17 +6,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2017/1/7 0007.
  */
-public class LogInterceptor implements HandlerInterceptor {
+public class LogPrintInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
 
         httpServletRequest.setAttribute("httpStartTimessss",System.nanoTime());
-
-
         return true;
     }
 
@@ -33,11 +32,23 @@ public class LogInterceptor implements HandlerInterceptor {
            long time = System.nanoTime() -startTime;
            int ms = (int) (time/1000000);
            long ns = time % 1000000;
-
            MyLog.d("the request "+httpServletRequest.getRequestURL() +"take server time:"+ms+"毫秒"+ns+"纳秒");
        }
+       logURL(httpServletRequest);
+    }
 
 
-
+    private void logURL(HttpServletRequest request) {
+        StringBuffer url = request.getRequestURL();
+        url.append("?");
+        Map<String, String[]> params = request.getParameterMap();
+        for (String key : params.keySet()) {
+            String[] values = params.get(key);
+            for (int i = 0; i < values.length; i++) {
+                String value = values[i];
+                url.append(key).append("=").append(value).append("&");
+            }
+        }
+        MyLog.i("@@@@@@@@@@@@@@@URL@@@@@@@@@@@@@@@@-->【" + url.toString() + "】");
     }
 }

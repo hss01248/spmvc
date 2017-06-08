@@ -1,9 +1,10 @@
 package com.hss01248.spmvc.controller;
 
 import com.hss01248.spmvc.bean.BaseNetBean;
-import com.hss01248.spmvc.po.Items;
 import com.hss01248.spmvc.exception.CustomException;
+import com.hss01248.spmvc.po.Items;
 import com.hss01248.spmvc.util.ContextUtil;
+import com.hss01248.spmvc.util.anno.FromDataNoRepeat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,6 +32,7 @@ public class TestController {
 
 
 
+    @FromDataNoRepeat
     @RequestMapping("/getCommonJson")
     public @ResponseBody Items getCommonJson(Integer id)throws Exception{
         Items items = getItems(id);
